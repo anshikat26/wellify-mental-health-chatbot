@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wellify | Welcome</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+    }
+
+    body.light {
+        background: linear-gradient(135deg, #dbeafe, #eef2ff);
+        color: #1e293b;
+    }
+
+    body.dark {
+        background: #0f172a;
+        color: #f8fafc;
+    }
+
+    .card {
+        width: 360px;
+        padding: 35px;
+        border-radius: 14px;
+        text-align: center;
+        background: white;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        transition: 0.3s;
+    }
+
+    body.dark .card {
+        background: #1e293b;
+    }
+
+    .brand {
+        color: #4a6cff;
+    }
+
+    input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 12px;
+        border-radius: 8px;
+        border: 1px solid #cbd5f5;
+    }
+
+    button {
+        width: 100%;
+        padding: 12px;
+        background: #4a6cff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    .theme-btn {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body class="light">
+
+<button class="theme-btn" onclick="toggleTheme()">🌙</button>
+
+<div class="card">
+    <h1>Welcome to <span class="brand">Wellify</span> 💙</h1>
+    <p>Your mental wellness companion</p>
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Enter your name" required>
+        <input type="number" name="age" placeholder="Enter your age" required>
+        <button type="submit">Get Started</button>
+    </form>
+</div>
+
+<script>
+    function toggleTheme() {
+        let body = document.body;
+        let btn = document.querySelector(".theme-btn");
+
+        if (body.classList.contains("light")) {
+            body.classList.replace("light", "dark");
+            btn.textContent = "☀️";
+            localStorage.setItem("theme", "dark");
+        } else {
+            body.classList.replace("dark", "light");
+            btn.textContent = "🌙";
+            localStorage.setItem("theme", "light");
+        }
+    }
+
+    window.onload = () => {
+        let saved = localStorage.getItem("theme");
+        if (saved === "dark") toggleTheme();
+    };
+</script>
+
+</body>
+</html>

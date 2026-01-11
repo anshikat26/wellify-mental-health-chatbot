@@ -1,0 +1,117 @@
+/* ===== THEME VARIABLES ===== */
+:root {
+    --bg-color: #f1f5f9;
+    --card-bg: #ffffff;
+    --text-color: #111827;
+    --sub-text: #4b5563;
+    --primary: #4a6cff;
+}
+
+.dark-theme {
+    --bg-color: #0f172a;
+    --card-bg: #1e293b;
+    --text-color: #f9fafb;
+    --sub-text: #cbd5f5;
+    --primary: #818cf8;
+}
+
+/* ===== GLOBAL ===== */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/* Theme button */
+.theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border: 1px solid var(--primary);
+    padding: 6px 10px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* ===== CHAT UI ===== */
+.chat-container {
+    width: 400px;
+    height: 520px;
+    background: var(--card-bg);
+    margin: 60px auto;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.chat-header {
+    background: var(--primary);
+    color: white;
+    padding: 15px;
+    border-radius: 12px 12px 0 0;
+}
+
+#chat-box {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.bot-msg {
+    background: #e0e7ff;
+    color: #000;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+
+.user-msg {
+    background: var(--primary);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    width: fit-content;
+}
+
+/* Input */
+.chat-input {
+    display: flex;
+    padding: 12px;
+    border-top: 1px solid #ccc;
+}
+
+.chat-input input {
+    flex: 1;
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.chat-input button {
+    margin-left: 8px;
+    height: 38px;
+    padding: 0 16px;
+    font-size: 14px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* Disclaimer */
+.disclaimer {
+    text-align: center;
+    font-size: 11px;
+    color: var(--sub-text);
+    margin-top: 8px;
+}

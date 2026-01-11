@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wellify | Dashboard</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+    }
+
+    body.light {
+        background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+        color: #1e293b;
+    }
+
+    body.dark {
+        background: #020617;
+        color: #f8fafc;
+    }
+
+    .card {
+        width: 380px;
+        padding: 35px;
+        border-radius: 14px;
+        text-align: center;
+        background: white;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    body.dark .card {
+        background: #1e293b;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 12px;
+        background: #4a6cff;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+    }
+
+    .btn.disabled {
+        background: #94a3b8;
+        pointer-events: none;
+    }
+
+    .theme-btn {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body class="light">
+
+<button class="theme-btn" onclick="toggleTheme()">🌙</button>
+
+<div class="card">
+    <h2>Welcome, {{ name }} 👋</h2>
+    <p>How would you like to take care of your mind today?</p>
+
+    <a href="/chatbot" class="btn">🧠 Start Chat</a>
+    <a href="/stress" class="btn">🌿 Stress Relief</a>
+    <a href="/affirmation" class="btn">💬 Daily Affirmation</a>
+    <a href="/helpline" class="btn">☎️ Helpline</a>
+</div>
+
+<script>
+    function toggleTheme() {
+        let body = document.body;
+        let btn = document.querySelector(".theme-btn");
+
+        if (body.classList.contains("light")) {
+            body.classList.replace("light", "dark");
+            btn.textContent = "☀️";
+            localStorage.setItem("theme", "dark");
+        } else {
+            body.classList.replace("dark", "light");
+            btn.textContent = "🌙";
+            localStorage.setItem("theme", "light");
+        }
+    }
+
+    window.onload = () => {
+        let saved = localStorage.getItem("theme");
+        if (saved === "dark") toggleTheme();
+    };
+</script>
+
+</body>
+</html>

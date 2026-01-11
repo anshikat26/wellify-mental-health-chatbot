@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wellify | Stress Relief</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+    }
+
+    body.light {
+        background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+        color: #1e293b;
+    }
+
+    body.dark {
+        background: #020617;
+        color: #f8fafc;
+    }
+
+    .card {
+        width: 420px;
+        padding: 35px;
+        border-radius: 14px;
+        background: white;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    body.dark .card {
+        background: #1e293b;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .section {
+        margin-bottom: 20px;
+    }
+
+    .section h4 {
+        margin-bottom: 8px;
+    }
+
+    .section p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .btn {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        margin-top: 12px;
+        background: #4a6cff;
+        color: white;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 15px;
+        text-align: center;
+        border: none;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background: #3b5bdb;
+    }
+
+    .theme-btn {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body class="light">
+
+<button class="theme-btn" onclick="toggleTheme()">🌙</button>
+
+<div class="card">
+    <h2>Stress Relief 🌿</h2>
+
+    <div class="section">
+        <h4>🫁 Breathing Exercise</h4>
+        <p>
+            Inhale slowly for 4 seconds<br>
+            Hold for 4 seconds<br>
+            Exhale gently for 6 seconds<br>
+            Repeat 5 times
+        </p>
+    </div>
+
+    <div class="section">
+        <h4>🖐️ 5-4-3-2-1 Grounding</h4>
+        <p>
+            5 things you can see<br>
+            4 things you can touch<br>
+            3 things you can hear<br>
+            2 things you can smell<br>
+            1 thing you can taste
+        </p>
+    </div>
+
+    <div class="section">
+        <h4>💙 Quick Calm Tips</h4>
+        <p>
+            • Stretch your shoulders<br>
+            • Drink a glass of water<br>
+            • Step away from the screen for a minute
+        </p>
+    </div>
+
+    <a href="/dashboard" class="btn">⬅ Back to Dashboard</a>
+</div>
+
+<script>
+    function toggleTheme() {
+        let body = document.body;
+        let btn = document.querySelector(".theme-btn");
+
+        if (body.classList.contains("light")) {
+            body.classList.replace("light", "dark");
+            btn.textContent = "☀️";
+            localStorage.setItem("theme", "dark");
+        } else {
+            body.classList.replace("dark", "light");
+            btn.textContent = "🌙";
+            localStorage.setItem("theme", "light");
+        }
+    }
+
+    window.onload = () => {
+        let saved = localStorage.getItem("theme");
+        if (saved === "dark") toggleTheme();
+    };
+</script>
+
+</body>
+</html>

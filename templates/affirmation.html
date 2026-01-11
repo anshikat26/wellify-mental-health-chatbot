@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wellify | Daily Affirmation</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.3s;
+    }
+
+    /* THEMES */
+    body.light {
+        background: linear-gradient(135deg, #e0f2fe, #f8fafc);
+        color: #1e293b;
+    }
+
+    body.dark {
+        background: #020617;
+        color: #f8fafc;
+    }
+
+    /* CARD */
+    .card {
+        width: 400px;
+        padding: 35px;
+        border-radius: 14px;
+        text-align: center;
+        background: white;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        transition: 0.3s;
+    }
+
+    body.dark .card {
+        background: #1e293b;
+    }
+
+    h2 {
+        margin-bottom: 15px;
+    }
+
+    .affirmation {
+        font-size: 18px;
+        font-style: italic;
+        margin: 25px 0;
+        line-height: 1.5;
+    }
+
+    /* BUTTONS – SAME STYLE AS DASHBOARD */
+    .btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-top: 14px;
+    background: linear-gradient(135deg, #4a6cff, #3b5bdb);
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    box-shadow: 0 6px 18px rgba(74,108,255,0.45);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+    /* THEME TOGGLE */
+    .theme-btn {
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        padding: 6px 12px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+
+<body class="light">
+
+<button class="theme-btn" onclick="toggleTheme()">🌙</button>
+
+<div class="card">
+    <h2>Daily Affirmation 🌸</h2>
+
+    <div class="affirmation" id="affirmationText">
+        You are doing the best you can, and that is enough.
+    </div>
+
+    <button class="btn" onclick="newAffirmation()">🔄 New Affirmation</button>
+    <a href="/dashboard" class="btn">⬅ Back to Dashboard</a>
+</div>
+
+<script>
+    const affirmations = [
+        "I am calm, safe, and in control.",
+        "My feelings are valid.",
+        "I deserve peace and happiness.",
+        "I am stronger than my challenges.",
+        "I choose progress, not perfection.",
+        "I am allowed to take things slow.",
+        "Today, I choose kindness towards myself."
+    ];
+
+    function newAffirmation() {
+        const random = Math.floor(Math.random() * affirmations.length);
+        document.getElementById("affirmationText").innerText =
+            affirmations[random];
+    }
+
+    function toggleTheme() {
+        let body = document.body;
+        let btn = document.querySelector(".theme-btn");
+
+        if (body.classList.contains("light")) {
+            body.classList.replace("light", "dark");
+            btn.textContent = "☀️";
+            localStorage.setItem("theme", "dark");
+        } else {
+            body.classList.replace("dark", "light");
+            btn.textContent = "🌙";
+            localStorage.setItem("theme", "light");
+        }
+    }
+
+    window.onload = () => {
+        let saved = localStorage.getItem("theme");
+        if (saved === "dark") toggleTheme();
+        newAffirmation();
+    };
+</script>
+
+</body>
+</html>
